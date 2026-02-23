@@ -1,0 +1,23 @@
+# Cloudflare Pages configuration
+# Build settings for Cloudflare Pages:
+#   Framework preset: Vite
+#   Build command: npm run build
+#   Build output directory: dist
+#   Node.js version: 18
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
